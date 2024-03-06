@@ -29,7 +29,6 @@ public void setMines()
 }
 
 public void draw ()
-	@@ -28,28 +34,65 @@ public void draw ()
     if(isWon() == true)
         displayWinningMessage();
 }
@@ -95,7 +94,6 @@ public int countMines(int row, int col)
     return numMines;
 }
 public class MSButton
-	@@ -58,13 +101,13 @@ public class MSButton
     private float x,y, width, height;
     private boolean clicked, flagged;
     private String myLabel;
@@ -109,7 +107,6 @@ public class MSButton
         x = myCol*width;
         y = myRow*height;
         myLabel = "";
-	@@ -73,20 +116,49 @@ public class MSButton
     }
 
     // called by manager
@@ -159,7 +156,6 @@ public class MSButton
             fill( 100 );
 
         rect(x, y, width, height);
-	@@ -105,4 +177,10 @@ public class MSButton
     {
         return flagged;
     }
