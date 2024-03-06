@@ -41,6 +41,7 @@ public boolean isWon(){
                     allPressed = true;
                 }else{
                     allPressed = false;
+                    return allPressed;
                 }
             }
         }
