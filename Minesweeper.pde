@@ -28,7 +28,7 @@ public void setMines()
       mines.add(buttons[rowR][colR]);
 }
 
-public void draw ()
+public void draw (){
     if(isWon() == true)
         displayWinningMessage();
 }
@@ -37,7 +37,7 @@ public boolean isWon(){
     for (int r = 0; r < NUM_ROWS; r++){
         for (int c = 0; c < NUM_COLS; c++){
             if (!mines.contains(buttons[r][c])){
-                if (buttons[r][c].clickedCkecker() == true){
+                if (buttons[r][c].clickedChecker() == true){
                     allPressed = true;
                 }else{
                     allPressed = false;
@@ -53,7 +53,7 @@ public void displayLosingMessage(){
         for (int c = 0; c < NUM_COLS; c++){
             buttons[r][c].setLabel("Lost!");
             if (mines.contains(buttons[r][c])){
-                buttons[r][c].Click();
+                buttons[r][c].Click(true);
             }
         }
     }
@@ -93,7 +93,8 @@ public int countMines(int row, int col)
        if (mines.contains(buttons[row][col-1])) numMines++;
     return numMines;
 }
-public class MSButton
+public class MSButton{
+     private int myRow, myCol;
     private float x,y, width, height;
     private boolean clicked, flagged;
     private String myLabel;
@@ -144,8 +145,7 @@ public class MSButton
              if (!buttons[row][col-1].clickedChecker()) buttons[row][col-1].mousePressed();
         }
     }
-    public void draw ()
-    {    
+    public void draw (){    
         if (flagged)
             fill(0);
         else if( clicked && mines.contains(this) )
@@ -156,6 +156,18 @@ public class MSButton
             fill( 100 );
 
         rect(x, y, width, height);
+        fill(0);
+        text(myLabel,x+width/2,y+height/2);
+    }
+     public void setLabel(String newLabel)
+    {
+        myLabel = newLabel;
+    }
+    public void setLabel(int newLabel)
+    {
+        myLabel = ""+ newLabel;
+    }
+    public boolean isFlagged()
     {
         return flagged;
     }
